@@ -1,0 +1,50 @@
+{
+  "athlete": {
+    "name": "Andrea Mitsuoka",
+    "age": 48,
+    "weight": 57,
+    "experience": "intermediário",
+    "goal": "Hipertrofia glúteo + força",
+    "limitations": []
+  },
+  "program": {
+    "duration": "4 semanas",
+    "frequency": "6 dias/semana",
+    "focus": "Glúteo + Posteriores + Core",
+    "methodology": "Heavy/Light Protocol"
+  },
+  "workouts": [
+    {
+      "id": "A",
+      "name": "Glúteo Pesado + Posteriores",
+      "day": ["Segunda", "Quinta"],
+      "duration": 70,
+      "intensity": "Máxima",
+      "exercises": [
+        {
+          "id": "step_up",
+          "name": "Subida no Banco",
+          "sets": 5,
+          "reps": "6-8",
+          "load": "80-85%",
+          "rest": "3min",
+          "cadence": "2-2-2-0",
+          "tut": 48,
+          "technique": "Unilateral",
+          "primary_muscle": "Glúteo Máximo",
+          "activation": "95%",
+          "theory": "Exercício com maior ativação EMG...",
+          "execution": {
+            "setup": "...",
+            "movement": "...",
+            "breathing": "..."
+          },
+          "common_errors": ["Valgo dinâmico", "Impulso"],
+          "progression": "Quando conseguir 8 reps, adicionar 5kg",
+          "video_url": "https://youtu.be/oCkQVg4Hyl8",
+          "image_url": "./images/step-up.jpg"
+        }
+      ]
+    }
+  ]
+}
