@@ -30,6 +30,11 @@ const WorkoutTable = () => {
     return current_week < 3 ? load.split("-")[0] : load.split("-")[1];
   };
 
+  const parseRestToSeconds = (rest) => {
+    const minutes = parseInt(rest);
+    return minutes * 60;
+  };
+
   if (!workout) return <div>Workout not found</div>;
 
   return (
@@ -54,7 +59,7 @@ const WorkoutTable = () => {
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{getRepsForWeek(exercise.reps)}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{getLoadForWeek(exercise.load)}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
-                <RestTimer durationInSeconds={180} />
+                <RestTimer durationInSeconds={parseRestToSeconds(exercise.rest)} />
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
                 <div className="flex items-center space-x-2">
@@ -84,7 +89,7 @@ const WorkoutTable = () => {
               <p><span className="font-semibold">Séries:</span> {exercise.sets}</p>
               <p><span className="font-semibold">Reps:</span> {getRepsForWeek(exercise.reps)}</p>
               <p><span className="font-semibold">Carga:</span> {getLoadForWeek(exercise.load)}</p>
-              <p><span className="font-semibold">Descanso:</span> <RestTimer durationInSeconds={180} /></p>
+              <p><span className="font-semibold">Descanso:</span> <RestTimer durationInSeconds={parseRestToSeconds(exercise.rest)} /></p>
             </div>
             <div className="mt-4 flex items-center space-x-2">
               <span className="font-semibold">Concluído:</span>
