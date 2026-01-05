@@ -196,9 +196,75 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .exercise-table tbody tr:hover {
-            background: rgba(50, 184, 198, 0.05);
+        /* Indicadores Visuais Claros */
+        .exercise-table tbody tr {
             cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .exercise-table tbody tr:hover {
+            background: rgba(50, 184, 198, 0.15) !important;
+            transform: scale(1.01);
+            box-shadow: 0 2px 8px rgba(50, 184, 198, 0.3);
+        }
+
+        /* Adicionar ícone de "mais info" */
+        .exercise-table tbody tr td:last-of-type::after {
+            content: "ℹ️";
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .exercise-table tbody tr td:last-of-type::after {
+            content: "ℹ️";
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .exercise-table tbody tr:hover td:last-of-type::after {
+            opacity: 1;
+        }
+
+        .checkbox-cell {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .serie-check {
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: var(--color-surface);
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 1.15em;
+            height: 1.15em;
+            border: 0.15em solid currentColor;
+            border-radius: 0.15em;
+            transform: translateY(-0.075em);
+            display: grid;
+            place-content: center;
+            cursor: pointer;
+        }
+
+        .serie-check::before {
+            content: "";
+            width: 0.65em;
+            height: 0.65em;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em var(--color-accent-b);
+            transform-origin: bottom left;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+
+        .serie-check:checked::before {
+            transform: scale(1);
         }
 
         .exercise-number {
@@ -704,6 +770,214 @@
                     "errors": ["Não usar amplitude total", "Mover rapidamente demais", "Deixar o pé tocar o chão entre reps"],
                     "coachingCues": ["Estique a perna completamente para trás", "Controle a volta (3s de descida)", "Não deixe o pé tocar o chão"],
                     "progression": "Aumentar peso a cada 2 semanas se conseguir 12 reps"
+                },
+                "mesa_flexora": {
+                    "name": "Mesa Flexora",
+                    "why": "Isolamento total de isquiotibiais com resistência progressiva e segura.",
+                    "anatomy": "Isquiotibiais (90%) | Glúteo (15%) | Panturrilha (10%)",
+                    "errors": ["Levantar o quadril do banco", "Movimento balístico ou rápido demais", "Não controlar a fase excêntrica (volta)"],
+                    "coachingCues": ["Mantenha o quadril fixo no banco", "Controle a subida e a descida", "Aperte os isquiotibiais no pico da contração"],
+                    "progression": "Quando 10 reps se tornarem fáceis → +5kg"
+                },
+                "supino_maquina": {
+                    "name": "Supino Máquina",
+                    "why": "Desenvolvimento de peitoral com alta segurança articular, ideal para progressão de carga.",
+                    "anatomy": "Peitoral (80%) | Tríceps (20%) | Deltóide Anterior (15%)",
+                    "errors": ["Perder a retração das escápulas", "Empurrar apenas com os braços, sem ativar o peito", "Curvar a lombar excessivamente"],
+                    "coachingCues": ["Mantenha as escápulas retraídas (ombros para trás e para baixo)", "Empurre com o peito, não com os ombros", "Controle o movimento em todas as fases"],
+                    "progression": "Quando 12 reps se tornarem fáceis → +5kg"
+                },
+                "crucifixo_maquina": {
+                    "name": "Crucifixo Máquina",
+                    "why": "Isolamento do peitoral com tensão contínua, promovendo estresse metabólico.",
+                    "anatomy": "Peitoral (90%) | Deltóide Anterior (10%)",
+                    "errors": ["Flexionar demais os cotovelos", "Usar impulso para mover a carga", "Perder a estabilidade dos ombros"],
+                    "coachingCues": ["Mantenha uma leve flexão nos cotovelos", "Sinta o peitoral alongar e contrair", "Movimento controlado e focado"],
+                    "progression": "Quando 15 reps fáceis → Aumentar a amplitude ou o peso"
+                },
+                "crossover_polia": {
+                    "name": "Crossover Polia",
+                    "why": "Trabalho focado na porção medial e inferior do peitoral, ótimo para finalização.",
+                    "anatomy": "Peitoral (85%) | Deltóide Anterior (15%)",
+                    "errors": ["Curvar as costas", "Puxar com os braços em vez de contrair o peito", "Movimento muito curto"],
+                    "coachingCues": ["Incline o tronco levemente à frente", "Imagine que está abraçando uma árvore", "Aperte o peito no final do movimento"],
+                    "progression": "Quando 15 reps fáceis → Aumentar o peso"
+                },
+                "desenvolvimento_ombro": {
+                    "name": "Desenvolvimento Ombro Máquina",
+                    "why": "Desenvolvimento dos deltóides com estabilidade e segurança para a articulação do ombro.",
+                    "anatomy": "Deltóide Anterior (70%) | Deltóide Medial (20%) | Tríceps (10%)",
+                    "errors": ["Arquear as costas", "Não descer até a linha do queixo", "Travar os cotovelos no topo"],
+                    "coachingCues": ["Mantenha as costas apoiadas", "Amplitude completa e controlada", "Foque em empurrar com os ombros"],
+                    "progression": "Quando 10 reps fáceis → +5kg"
+                },
+                "triceps_polia": {
+                    "name": "Tríceps Polia",
+                    "why": "Isolamento eficaz do tríceps com tensão constante, ideal para hipertrofia.",
+                    "anatomy": "Tríceps (95%)",
+                    "errors": ["Mover os ombros", "Usar o corpo para empurrar o peso", "Não estender completamente os cotovelos"],
+                    "coachingCues": ["Mantenha os cotovelos colados ao corpo", "Estenda completamente os braços", "Concentre a força no tríceps"],
+                    "progression": "Quando 12 reps fáceis → +2.5kg"
+                },
+                "elevacao_lateral": {
+                    "name": "Elevação Lateral com Halteres",
+                    "why": "Principal exercício para desenvolver a porção medial do deltóide, criando a aparência de ombros largos.",
+                    "anatomy": "Deltóide Medial (90%) | Deltóide Anterior (10%)",
+                    "errors": ["Usar impulso do corpo", "Elevar os halteres acima da linha dos ombros", "Flexionar demais os cotovelos"],
+                    "coachingCues": ["Imagine que está derramando água de um jarro", "Eleve os cotovelos, não as mãos", "Movimento lento e controlado"],
+                    "progression": "Quando 15 reps fáceis → +1kg por halter"
+                },
+                "stiff_maquina_polia": {
+                    "name": "Stiff Máquina/Polia",
+                    "why": "Excelente para alongar e fortalecer isquiotibiais e glúteos com menor sobrecarga na lombar.",
+                    "anatomy": "Isquiotibiais (70%) | Glúteo (30%) | Lombar (10%)",
+                    "errors": ["Curvar a coluna", "Flexionar demais os joelhos", "Perder a tensão no músculo alvo"],
+                    "coachingCues": ["Mantenha a coluna neutra", "Dobre o quadril, não a cintura", "Sinta o alongamento nos isquiotibiais"],
+                    "progression": "Quando 12 reps fáceis → Aumentar o peso"
+                },
+                "cadeira_adutora": {
+                    "name": "Cadeira Adutora",
+                    "why": "Fortalecimento dos músculos adutores da coxa, importantes para a estabilidade do quadril e joelho.",
+                    "anatomy": "Adutores (95%)",
+                    "errors": ["Usar impulso", "Amplitude de movimento muito curta", "Não controlar a fase de abertura"],
+                    "coachingCues": ["Controle o movimento em ambas as direções", "Sinta a contração na parte interna da coxa", "Aperte no final do movimento"],
+                    "progression": "Quando 15 reps fáceis → +5kg"
+                },
+                "extensao_lombar": {
+                    "name": "Extensão Lombar",
+                    "why": "Fortalece os músculos eretores da espinha, melhorando a postura e prevenindo dores lombares.",
+                    "anatomy": "Eretores da Espinha (80%) | Glúteo (20%)",
+                    "errors": ["Hiperextender a coluna no topo", "Movimento muito rápido", "Usar impulso para subir"],
+                    "coachingCues": ["Mantenha o movimento controlado", "Contraia os glúteos no topo para proteger a lombar", "Suba até o corpo ficar alinhado"],
+                    "progression": "Quando 15 reps fáceis → Segurar um peso"
+                },
+                "prancha_maquina": {
+                    "name": "Prancha Máquina",
+                    "why": "Fortalecimento do core de forma dinâmica e com sobrecarga progressiva.",
+                    "anatomy": "Abdômen Reto (70%) | Oblíquos (20%) | Transverso (10%)",
+                    "errors": ["Deixar o quadril cair", "Curvar as costas", "Prender a respiração"],
+                    "coachingCues": ["Mantenha o corpo reto como uma prancha", "Contraia o abdômen e os glúteos", "Respire de forma contínua"],
+                    "progression": "Quando 60s fácil → Aumentar a carga"
+                },
+                "elevacao_pelvica": {
+                    "name": "Elevação Pélvica",
+                    "why": "Ativação do core inferior e glúteos, melhorando a estabilidade pélvica.",
+                    "anatomy": "Abdômen Inferior (60%) | Glúteo (30%) | Flexores do Quadril (10%)",
+                    "errors": ["Usar impulso das pernas", "Arquear a lombar", "Não contrair o abdômen"],
+                    "coachingCues": ["Puxe o umbigo para dentro", "Eleve as pernas usando a força do abdômen", "Desça de forma controlada"],
+                    "progression": "Quando 20 reps fáceis → Adicionar caneleiras"
+                },
+                "puxada_frontal": {
+                    "name": "Puxada Frontal",
+                    "why": "Desenvolvimento da largura das costas (grande dorsal) com um movimento seguro e eficaz.",
+                    "anatomy": "Grande Dorsal (80%) | Bíceps (15%) | Romboides (5%)",
+                    "errors": ["Usar o impulso do corpo para puxar", "Puxar a barra para muito baixo (além do peito)", "Não retrair as escápulas"],
+                    "coachingCues": ["Estufe o peito e puxe a barra em direção a ele", "Contraia as costas no final do movimento", "Controle a subida da barra"],
+                    "progression": "Quando 10 reps fáceis → +5kg"
+                },
+                "remada_apoiada": {
+                    "name": "Remada Apoiada",
+                    "why": "Trabalha a espessura das costas (romboides e trapézio) com suporte para o peito, isolando os músculos das costas.",
+                    "anatomy": "Romboides (60%) | Trapézio (20%) | Grande Dorsal (20%)",
+                    "errors": ["Puxar com os braços", "Não juntar as escápulas", "Movimento curto"],
+                    "coachingCues": ["Puxe os cotovelos para trás", "Junte as escápulas no final da remada", "Sinta o meio das costas trabalhando"],
+                    "progression": "Quando 12 reps fáceis → +5kg"
+                },
+                "polia_remada_baixa": {
+                    "name": "Polia Remada Baixa",
+                    "why": "Desenvolvimento da parte inferior do grande dorsal e melhora da postura.",
+                    "anatomy": "Grande Dorsal (70%) | Romboides (20%) | Bíceps (10%)",
+                    "errors": ["Balançar o tronco", "Puxar com a lombar", "Não estender completamente os braços"],
+                    "coachingCues": ["Mantenha o tronco ereto", "Puxe o pegador em direção ao abdômen", "Contraia as costas"],
+                    "progression": "Quando 12 reps fáceis → +5kg"
+                },
+                "puxada_aberta": {
+                    "name": "Puxada Aberta",
+                    "why": "Foco na porção superior e externa do grande dorsal, contribuindo para a 'asa' das costas.",
+                    "anatomy": "Grande Dorsal (85%) | Bíceps (10%)",
+                    "errors": ["Pegada muito aberta ou muito fechada", "Balançar o corpo", "Puxar a barra com os braços"],
+                    "coachingCues": ["Pegada um pouco mais larga que os ombros", "Puxe a barra em direção ao peito", "Imagine que está puxando com os cotovelos"],
+                    "progression": "Quando 10 reps fáceis → +5kg"
+                },
+                "rosca_maquina": {
+                    "name": "Rosca Máquina",
+                    "why": "Isolamento do bíceps com uma curva de resistência otimizada pela máquina.",
+                    "anatomy": "Bíceps (95%)",
+                    "errors": ["Usar os ombros para levantar o peso", "Movimento rápido e sem controle", "Não estender completamente os braços"],
+                    "coachingCues": ["Mantenha os cotovelos fixos", "Contraia o bíceps no topo", "Controle a descida"],
+                    "progression": "Quando 12 reps fáceis → +5kg"
+                },
+                "triceps_maquina": {
+                    "name": "Tríceps Máquina",
+                    "why": "Isolamento seguro e eficaz do tríceps, permitindo alta sobrecarga.",
+                    "anatomy": "Tríceps (95%)",
+                    "errors": ["Encolher os ombros", "Não estender completamente os cotovelos", "Movimento explosivo"],
+                    "coachingCues": ["Mantenha os ombros para baixo e para trás", "Estenda os braços completamente", "Sinta o tríceps queimar"],
+                    "progression": "Quando 12 reps fáceis → +5kg"
+                },
+                "face_pull": {
+                    "name": "Face Pull",
+                    "why": "Excelente para a saúde dos ombros, fortalecendo o manguito rotador e a parte superior das costas.",
+                    "anatomy": "Deltóide Posterior (50%) | Romboides (30%) | Manguito Rotador (20%)",
+                    "errors": ["Puxar com o bíceps", "Não rotacionar os ombros externamente", "Usar muito peso"],
+                    "coachingCues": ["Puxe a corda em direção ao rosto", "Afaste as mãos no final do movimento", "Mantenha os cotovelos altos"],
+                    "progression": "Quando 20 reps fáceis → Aumentar o peso levemente"
+                },
+                "maquina_extensao_quadril": {
+                    "name": "Máquina Extensão de Quadril",
+                    "why": "Isolamento direto do glúteo máximo, ideal para finalização e pump.",
+                    "anatomy": "Glúteo Máximo (90%) | Isquiotibiais (10%)",
+                    "errors": ["Usar a lombar para mover o peso", "Movimento muito curto", "Não contrair o glúteo no pico"],
+                    "coachingCues": ["Foque em empurrar com o calcanhar", "Contraia o glúteo por 2 segundos no final", "Mantenha o abdômen contraído"],
+                    "progression": "Quando 15 reps fáceis → Aumentar o peso"
+                },
+                "cadeira_abdutora": {
+                    "name": "Cadeira Abdutora",
+                    "why": "Fortalece o glúteo médio e mínimo, melhorando a estabilidade do quadril e a forma arredondada do glúteo.",
+                    "anatomy": "Glúteo Médio (80%) | Glúteo Mínimo (20%)",
+                    "errors": ["Usar impulso para abrir as pernas", "Não controlar a volta", "Inclinar o corpo para frente"],
+                    "coachingCues": ["Sente-se com as costas retas", "Controle o movimento de abertura e fechamento", "Sinta a lateral do glúteo trabalhando"],
+                    "progression": "Quando 15 reps fáceis → +5kg"
+                },
+                "polia_abducao": {
+                    "name": "Polia Abdução",
+                    "why": "Trabalho unilateral do glúteo médio, corrigindo assimetrias e melhorando a estabilidade.",
+                    "anatomy": "Glúteo Médio (85%)",
+                    "errors": ["Balançar o corpo", "Usar a perna de apoio para impulsionar", "Movimento não controlado"],
+                    "coachingCues": ["Mantenha o tronco estável", "Conduza o movimento com a lateral do quadril", "Controle a volta da perna"],
+                    "progression": "Quando 15 reps fáceis → Aumentar o peso"
+                },
+                "ponte_corpo_livre": {
+                    "name": "Ponte (Corpo Livre)",
+                    "why": "Ativação fundamental do glúteo, ideal para aquecimento ou finalização com altas repetições.",
+                    "anatomy": "Glúteo Máximo (80%) | Isquiotibiais (20%)",
+                    "errors": ["Elevar demais o quadril (hiperextensão lombar)", "Não contrair os glúteos no topo", "Empurrar com os dedos do pé"],
+                    "coachingCues": ["Empurre com os calcanhares", "Aperte os glúteos no topo", "Mantenha o abdômen contraído"],
+                    "progression": "Quando 30 reps fáceis → Adicionar uma anilha no quadril"
+                },
+                "agachamento_sumo_bw": {
+                    "name": "Agachamento Sumô (BW)",
+                    "why": "Ênfase nos glúteos e adutores devido à base mais larga, ótimo para pump.",
+                    "anatomy": "Glúteo (60%) | Adutores (30%) | Quadríceps (10%)",
+                    "errors": ["Deixar os joelhos caírem para dentro", "Inclinar o tronco demais para frente", "Não descer o suficiente"],
+                    "coachingCues": ["Mantenha os joelhos alinhados com os pés", "Peito aberto e costas retas", "Agache como se fosse sentar em uma cadeira"],
+                    "progression": "Quando 30 reps fáceis → Segurar um halter"
+                },
+                "prancha_dinamica": {
+                    "name": "Prancha Dinâmica",
+                    "why": "Desafia o core a manter a estabilidade durante o movimento, aumentando a dificuldade.",
+                    "anatomy": "Abdômen Reto (60%) | Oblíquos (30%) | Transverso (10%)",
+                    "errors": ["Deixar o quadril balançar", "Perder a linha reta do corpo", "Prender a respiração"],
+                    "coachingCues": ["Mantenha o core sempre contraído", "Movimentos lentos e controlados", "Imagine que tem um copo de água nas costas"],
+                    "progression": "Quando 12 reps (cada lado) fáceis → Adicionar mais repetições"
+                },
+                "crunch_maquina": {
+                    "name": "Crunch Máquina",
+                    "why": "Isolamento do abdômen reto com sobrecarga controlada.",
+                    "anatomy": "Abdômen Reto (90%) | Oblíquos (10%)",
+                    "errors": ["Puxar com o pescoço", "Usar impulso", "Amplitude curta"],
+                    "coachingCues": ["Mantenha o queixo longe do peito", "Contraia o abdômen para mover o peso", "Sinta a queimação no abdômen"],
+                    "progression": "Quando 15 reps fáceis → +5kg"
                 }
             }
         };
@@ -761,7 +1035,7 @@
                             <td>90s</td>
                         </tr>
                         <tr style="background: rgba(50, 184, 198, 0.05);"><td colspan="7" style="padding: 12px;"><span class="triset-indicator">🔗 TRISET 2</span></td></tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('maquina_extensao_quadril')">
                             <td class="exercise-number">2A</td>
                             <td class="exercise-name">MÁQ. EXTENSÃO QUADRIL</td>
                             <td>3</td>
@@ -770,7 +1044,7 @@
                             <td>2-0-2-0</td>
                             <td>0s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('cadeira_abdutora')">
                             <td class="exercise-number">2B</td>
                             <td class="exercise-name">CADEIRA ABDUTORA</td>
                             <td>3</td>
@@ -779,7 +1053,7 @@
                             <td>2-0-2-0</td>
                             <td>0s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('polia_abducao')">
                             <td class="exercise-number">2C</td>
                             <td class="exercise-name">POLIA ABDUÇÃO</td>
                             <td>3</td>
@@ -788,7 +1062,7 @@
                             <td>2-0-1-0</td>
                             <td>60s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('crunch_maquina')">
                             <td class="exercise-number">3</td>
                             <td class="exercise-name">CRUNCH MÁQUINA</td>
                             <td>3</td>
@@ -816,7 +1090,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr onclick="showExerciseDetail('supino_maquina')">
                             <td class="exercise-number">1</td>
                             <td class="exercise-name">SUPINO MÁQUINA</td>
                             <td>4</td>
@@ -826,7 +1100,7 @@
                             <td>90s</td>
                         </tr>
                         <tr style="background: rgba(50, 184, 198, 0.05);"><td colspan="7" style="padding: 12px;"><span class="biset-indicator">🔗 BISET 1</span></td></tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('crucifixo_maquina')">
                             <td class="exercise-number">1A</td>
                             <td class="exercise-name">CRUCIFIXO MÁQUINA</td>
                             <td>3</td>
@@ -835,7 +1109,7 @@
                             <td>2-0-2-0</td>
                             <td>0s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('crossover_polia')">
                             <td class="exercise-number">1B</td>
                             <td class="exercise-name">CROSSOVER POLIA</td>
                             <td>3</td>
@@ -844,7 +1118,7 @@
                             <td>2-0-1-0</td>
                             <td>60s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('desenvolvimento_ombro')">
                             <td class="exercise-number">2</td>
                             <td class="exercise-name">DESENVOLVIMENTO OMBRO</td>
                             <td>4</td>
@@ -853,7 +1127,7 @@
                             <td>3-0-1-0</td>
                             <td>90s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('triceps_polia')">
                             <td class="exercise-number">3</td>
                             <td class="exercise-name">TRÍCEPS POLIA</td>
                             <td>3</td>
@@ -862,7 +1136,7 @@
                             <td>2-0-2-0</td>
                             <td>60s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('elevacao_lateral')">
                             <td class="exercise-number">4</td>
                             <td class="exercise-name">ELEVAÇÃO LATERAL</td>
                             <td>3</td>
@@ -871,7 +1145,7 @@
                             <td>2-0-2-0</td>
                             <td>60s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('crunch_maquina')">
                             <td class="exercise-number">5</td>
                             <td class="exercise-name">CRUNCH MÁQUINA</td>
                             <td>3</td>
@@ -899,7 +1173,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr onclick="showExerciseDetail('mesa_flexora')">
                             <td class="exercise-number">1</td>
                             <td class="exercise-name">MESA FLEXORA (deitada)</td>
                             <td>4</td>
@@ -908,7 +1182,7 @@
                             <td>3-0-2-0</td>
                             <td>90s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('stiff_maquina_polia')">
                             <td class="exercise-number">2</td>
                             <td class="exercise-name">STIFF MÁQUINA/POLIA</td>
                             <td>4</td>
@@ -917,7 +1191,7 @@
                             <td>3-0-2-0</td>
                             <td>90s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('cadeira_adutora')">
                             <td class="exercise-number">3</td>
                             <td class="exercise-name">CADEIRA ADUTORA</td>
                             <td>3</td>
@@ -926,7 +1200,7 @@
                             <td>2-0-1-0</td>
                             <td>60s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('extensao_lombar')">
                             <td class="exercise-number">4</td>
                             <td class="exercise-name">EXTENSÃO LOMBAR</td>
                             <td>4</td>
@@ -936,7 +1210,7 @@
                             <td>90s</td>
                         </tr>
                         <tr style="background: rgba(50, 184, 198, 0.05);"><td colspan="7" style="padding: 12px;"><span class="triset-indicator">🔗 CORE INTENSO</span></td></tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('prancha_maquina')">
                             <td class="exercise-number">5A</td>
                             <td class="exercise-name">PRANCHA MÁQUINA</td>
                             <td>4</td>
@@ -945,7 +1219,7 @@
                             <td>Isométrico</td>
                             <td>0s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('elevacao_pelvica')">
                             <td class="exercise-number">5B</td>
                             <td class="exercise-name">ELEVAÇÃO PÉLVICA</td>
                             <td>4</td>
@@ -954,7 +1228,7 @@
                             <td>2-0-2-0</td>
                             <td>0s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('crunch_maquina')">
                             <td class="exercise-number">5C</td>
                             <td class="exercise-name">CRUNCH MÁQUINA</td>
                             <td>4</td>
@@ -982,7 +1256,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr onclick="showExerciseDetail('puxada_frontal')">
                             <td class="exercise-number">1</td>
                             <td class="exercise-name">PUXADA FRONTAL</td>
                             <td>4</td>
@@ -992,7 +1266,7 @@
                             <td>90s</td>
                         </tr>
                         <tr style="background: rgba(50, 184, 198, 0.05);"><td colspan="7" style="padding: 12px;"><span class="biset-indicator">🔗 BISET 1</span></td></tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('remada_apoiada')">
                             <td class="exercise-number">1A</td>
                             <td class="exercise-name">REMADA APOIADA</td>
                             <td>3</td>
@@ -1001,7 +1275,7 @@
                             <td>2-0-2-0</td>
                             <td>0s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('polia_remada_baixa')">
                             <td class="exercise-number">1B</td>
                             <td class="exercise-name">POLIA REMADA BAIXA</td>
                             <td>3</td>
@@ -1010,7 +1284,7 @@
                             <td>2-0-1-0</td>
                             <td>60s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('puxada_aberta')">
                             <td class="exercise-number">2</td>
                             <td class="exercise-name">PUXADA ABERTA</td>
                             <td>3</td>
@@ -1020,7 +1294,7 @@
                             <td>60s</td>
                         </tr>
                         <tr style="background: rgba(50, 184, 198, 0.05);"><td colspan="7" style="padding: 12px;"><span class="biset-indicator">🔗 BISET 2 - BRAÇOS</span></td></tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('rosca_maquina')">
                             <td class="exercise-number">3A</td>
                             <td class="exercise-name">ROSCA MÁQUINA</td>
                             <td>3</td>
@@ -1029,7 +1303,7 @@
                             <td>2-0-2-0</td>
                             <td>0s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('triceps_maquina')">
                             <td class="exercise-number">3B</td>
                             <td class="exercise-name">TRÍCEPS MÁQUINA</td>
                             <td>3</td>
@@ -1038,7 +1312,7 @@
                             <td>2-0-2-0</td>
                             <td>60s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('face_pull')">
                             <td class="exercise-number">4</td>
                             <td class="exercise-name">FACE PULL</td>
                             <td>3</td>
@@ -1047,7 +1321,7 @@
                             <td>2-0-1-0</td>
                             <td>45s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('elevacao_pelvica')">
                             <td class="exercise-number">5</td>
                             <td class="exercise-name">ELEVAÇÃO PÉLVICA</td>
                             <td>3</td>
@@ -1076,7 +1350,7 @@
                     </thead>
                     <tbody>
                         <tr style="background: rgba(50, 184, 198, 0.05);"><td colspan="7" style="padding: 12px;"><span class="triset-indicator">🔗 TRISET PUMP 1</span></td></tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('polia_coice')">
                             <td class="exercise-number">1A</td>
                             <td class="exercise-name">POLIA COICE (leve)</td>
                             <td>3</td>
@@ -1085,7 +1359,7 @@
                             <td>1-0-1-0</td>
                             <td>0s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('cadeira_abdutora')">
                             <td class="exercise-number">1B</td>
                             <td class="exercise-name">CADEIRA ABDUTORA</td>
                             <td>3</td>
@@ -1094,7 +1368,7 @@
                             <td>1-0-1-0</td>
                             <td>0s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('ponte_corpo_livre')">
                             <td class="exercise-number">1C</td>
                             <td class="exercise-name">PONTE (corpo livre)</td>
                             <td>3</td>
@@ -1104,7 +1378,7 @@
                             <td>60s</td>
                         </tr>
                         <tr style="background: rgba(50, 184, 198, 0.05);"><td colspan="7" style="padding: 12px;"><span class="triset-indicator">🔗 TRISET PUMP 2</span></td></tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('polia_abducao')">
                             <td class="exercise-number">2A</td>
                             <td class="exercise-name">POLIA ABDUÇÃO</td>
                             <td>3</td>
@@ -1113,7 +1387,7 @@
                             <td>1-0-1-0</td>
                             <td>0s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('maquina_extensao_quadril')">
                             <td class="exercise-number">2B</td>
                             <td class="exercise-name">MÁQ. EXTENSÃO QUADRIL</td>
                             <td>3</td>
@@ -1122,7 +1396,7 @@
                             <td>1-0-1-0</td>
                             <td>0s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('agachamento_sumo_bw')">
                             <td class="exercise-number">2C</td>
                             <td class="exercise-name">AGACHAMENTO SUMÔ (BW)</td>
                             <td>3</td>
@@ -1132,7 +1406,7 @@
                             <td>60s</td>
                         </tr>
                         <tr style="background: rgba(50, 184, 198, 0.05);"><td colspan="7" style="padding: 12px;"><span class="triset-indicator">🔗 CORE FINALIZADOR</span></td></tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('prancha_maquina')">
                             <td class="exercise-number">3A</td>
                             <td class="exercise-name">PRANCHA MÁQUINA</td>
                             <td>3</td>
@@ -1141,7 +1415,7 @@
                             <td>Isométrico</td>
                             <td>30s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('crunch_maquina')">
                             <td class="exercise-number">3B</td>
                             <td class="exercise-name">CRUNCH MÁQUINA</td>
                             <td>3</td>
@@ -1150,7 +1424,7 @@
                             <td>1-0-2-0</td>
                             <td>30s</td>
                         </tr>
-                        <tr>
+                        <tr onclick="showExerciseDetail('elevacao_pelvica')">
                             <td class="exercise-number">3C</td>
                             <td class="exercise-name">ELEVAÇÃO PÉLVICA</td>
                             <td>3</td>
@@ -1630,7 +1904,10 @@
             if (tabName.startsWith('treino-')) {
                 const workoutId = tabName.split('-')[1].toUpperCase();
                 const contentId = `treino-${tabName.split('-')[1]}-content`;
-                document.getElementById(contentId).innerHTML = treinos[currentWeek][workoutId];
+                const rawHtml = treinos[currentWeek][workoutId];
+                const htmlWithCheckboxes = addCheckboxesToTable(rawHtml, workoutId);
+                document.getElementById(contentId).innerHTML = htmlWithCheckboxes;
+                loadProgress();
             }
         }
 
@@ -1640,17 +1917,26 @@
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // Reload current tab if it's a workout tab
-            const activeTab = document.querySelector('.tab-content.active').id;
-            if (activeTab.startsWith('treino-')) {
-                const workoutId = activeTab.split('-')[1].toUpperCase();
-                document.getElementById(activeTab + '-content').innerHTML = treinos[currentWeek][workoutId];
-            }
+            // Reload all workout tabs
+            ['A', 'B', 'C', 'E', 'F'].forEach(workoutId => {
+                const contentId = `treino-${workoutId.toLowerCase()}-content`;
+                if(treinos[currentWeek] && treinos[currentWeek][workoutId]) {
+                    const rawHtml = treinos[currentWeek][workoutId];
+                    const htmlWithCheckboxes = addCheckboxesToTable(rawHtml, workoutId);
+                    document.getElementById(contentId).innerHTML = htmlWithCheckboxes;
+                }
+            });
+            loadProgress();
         }
 
         function showExerciseDetail(exerciseId) {
             const exercise = athleteData.exercises[exerciseId];
-            if (!exercise) return;
+
+            // FALLBACK: Se não existir dados, mostrar info genérica
+            if (!exercise) {
+                showGenericExerciseModal(exerciseId);
+                return;
+            }
 
             let cadenceWeek12 = '';
             let cadenceWeek34 = '';
@@ -1715,6 +2001,37 @@
             document.getElementById('exerciseModal').style.display = 'block';
         }
 
+        function showGenericExerciseModal(exerciseId) {
+            const html = `
+                <div class="modal-header">
+                    <span class="close-modal" onclick="closeModal()">&times;</span>
+                    <h2>📋 ${exerciseId.replace(/_/g, ' ').toUpperCase()}</h2>
+                    <p style="color: var(--color-accent-a);">
+                        ⚠️ Detalhes completos deste exercício serão adicionados em breve!
+                    </p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>💡 Dicas Gerais</h3>
+                    <ul>
+                        <li>Execute com controle total</li>
+                        <li>Respeite a cadência indicada</li>
+                        <li>Foque na conexão mente-músculo</li>
+                    </ul>
+                </div>
+
+                <div class="modal-section">
+                    <h3>📹 Referências</h3>
+                    <p><a href="https://www.youtube.com/results?search_query=${exerciseId}" target="_blank" style="color: var(--color-primary);">
+                        🔗 Vídeos no YouTube
+                    </a></p>
+                </div>
+            `;
+
+            document.getElementById('modalBody').innerHTML = html;
+            document.getElementById('exerciseModal').style.display = 'block';
+        }
+
         function closeModal() {
             document.getElementById('exerciseModal').style.display = 'none';
         }
@@ -1726,12 +2043,98 @@
             }
         }
 
+        function addCheckboxesToTable(htmlString, workoutId) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlString, 'text/html');
+            const table = doc.querySelector('.exercise-table');
+            if (!table) return htmlString;
+
+            const headerRow = table.querySelector('thead tr');
+            if (headerRow) {
+                const th = doc.createElement('th');
+                th.textContent = '✓';
+                headerRow.insertBefore(th, headerRow.firstElementChild);
+            }
+
+            const rows = table.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                if (row.querySelector('.biset-indicator') || row.querySelector('.triset-indicator')) {
+                    const indicatorCell = row.querySelector('td');
+                    indicatorCell.setAttribute('colspan', '7');
+                    row.insertBefore(doc.createElement('td'), indicatorCell);
+                    return;
+                }
+
+                const exerciseId = row.getAttribute('onclick')?.match(/'(.*?)'/)?.[1];
+                if(!exerciseId) return;
+
+                const cells = row.querySelectorAll('td');
+                if(cells.length < 3) return;
+
+                const series = parseInt(cells[2].textContent, 10);
+                if (isNaN(series)) return;
+
+                const checkboxCell = doc.createElement('td');
+                const checkboxContainer = doc.createElement('div');
+                checkboxContainer.className = 'checkbox-cell';
+                for (let i = 1; i <= series; i++) {
+                    const checkbox = doc.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.className = 'serie-check';
+                    checkbox.dataset.exercise = `${workoutId}-${exerciseId}`;
+                    checkbox.dataset.serie = i;
+                    checkboxContainer.appendChild(checkbox);
+                }
+                checkboxCell.appendChild(checkboxContainer);
+                row.insertBefore(checkboxCell, row.firstElementChild);
+            });
+
+            return doc.body.innerHTML;
+        }
+
+        function saveProgress(exercise, serie, isChecked) {
+            const today = new Date().toISOString().split('T')[0];
+            let progress = JSON.parse(localStorage.getItem('workout_progress_andrea')) || {};
+            if (!progress[today]) {
+                progress[today] = {};
+            }
+            progress[today][`${exercise}_s${serie}`] = isChecked;
+            localStorage.setItem('workout_progress_andrea', JSON.stringify(progress));
+        }
+
+        function loadProgress() {
+            const today = new Date().toISOString().split('T')[0];
+            const progress = JSON.parse(localStorage.getItem('workout_progress_andrea')) || {};
+            if (progress[today]) {
+                Object.keys(progress[today]).forEach(key => {
+                    const [exercise, serie] = key.split('_s');
+                    const isChecked = progress[today][key];
+                    const checkbox = document.querySelector(`.serie-check[data-exercise="${exercise}"][data-serie="${serie}"]`);
+                    if (checkbox) {
+                        checkbox.checked = isChecked;
+                    }
+                });
+            }
+        }
+
+        document.addEventListener('change', function(e) {
+            if (e.target.classList.contains('serie-check')) {
+                const exercise = e.target.dataset.exercise;
+                const serie = e.target.dataset.serie;
+                saveProgress(exercise, serie, e.target.checked);
+            }
+        });
+
         // Load initial data
-        document.getElementById('treino-a-content').innerHTML = treinos[12]['A'];
-        document.getElementById('treino-b-content').innerHTML = treinos[12]['B'];
-        document.getElementById('treino-c-content').innerHTML = treinos[12]['C'];
-        document.getElementById('treino-e-content').innerHTML = treinos[12]['E'];
-        document.getElementById('treino-f-content').innerHTML = treinos[12]['F'];
+        ['A', 'B', 'C', 'E', 'F'].forEach(workoutId => {
+            const contentId = `treino-${workoutId.toLowerCase()}-content`;
+            if(treinos[currentWeek] && treinos[currentWeek][workoutId]) {
+                const rawHtml = treinos[currentWeek][workoutId];
+                const htmlWithCheckboxes = addCheckboxesToTable(rawHtml, workoutId);
+                document.getElementById(contentId).innerHTML = htmlWithCheckboxes;
+            }
+        });
+        loadProgress();
     </script>
 </body>
 </html>
