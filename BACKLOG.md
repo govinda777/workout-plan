@@ -5,8 +5,19 @@
 
 ---
 
-## 🟢 Phase 1: Foundation (Current State - Static HTML)
-*Status: ✅ Active / Maintenance*
+## 📊 Status Summary
+
+| Phase | Focus | Status | Completion |
+|-------|-------|--------|------------|
+| **1. Foundation** | Static HTML Site | ✅ Done | 100% |
+| **2. Migration** | Next.js + Components | 🚧 **In Progress** | 0% |
+| **3. Backend** | Auth & Persistence | 📅 Planned | 0% |
+| **4. Web3** | NFT & Gamification | 📅 Future | 0% |
+
+---
+
+## 🟢 Phase 1: Foundation (Static HTML)
+*Status: ✅ Complete*
 *Goal: Provide a functional workout tracker for Andrea Mitsuoka using simple technologies.*
 
 - [x] **Feature: View Workout Plan**
@@ -32,30 +43,52 @@
 
 ---
 
-## 🏗️ Phase 2: Modernization (Next.js Migration)
-*Status: 🚧 To Do*
-*Goal: Modularize code, improve performance, and prepare for scalability.*
+## 🚧 Phase 2: Modernization (Next.js Migration)
+*Status: 🚀 Ready for Development*
+*Goal: Modularize code, improve performance, and prepare for scalability using "Baby Steps".*
 
-- [ ] **Feature: Project Setup**
-    - `GIVEN` the developer environment
-    - `WHEN` I initialize the Next.js 14 project
-    - `THEN` the folder structure should follow the App Router standards.
+### 2.1 Environment & Data
+- [ ] **Feature: Next.js Initialization**
+    - `GIVEN` a standard Node.js environment
+    - `WHEN` I run the initialization command
+    - `THEN` a Next.js 14 project with TypeScript and Tailwind should be created.
 
-- [ ] **Feature: Component Architecture**
+- [ ] **Feature: Data Extraction**
     - `GIVEN` the monolithic `index.html`
-    - `WHEN` I refactor the code
-    - `THEN` exercises should be reusable React components.
-    - `AND` data (athlete data) should be separated from the view logic (JSON files).
+    - `WHEN` I extract the JSON data
+    - `THEN` `athleteData` and `treinos` should exist in a separate `src/data/workouts.ts` or `.json` file.
 
-- [ ] **Feature: Responsive UI with Tailwind**
-    - `GIVEN` a mobile user
-    - `WHEN` they access the application
-    - `THEN` the interface should be fully responsive using Tailwind CSS classes.
+### 2.2 Component Migration (Baby Steps)
+- [ ] **Feature: Layout Component**
+    - `GIVEN` the new Next.js app
+    - `WHEN` I create the Root Layout
+    - `THEN` it should include the global CSS variables and font settings from the original HTML.
+
+- [ ] **Feature: Header Component**
+    - `GIVEN` the athlete info section
+    - `WHEN` I render the `<Header />` component
+    - `THEN` it should display the athlete's name, age, and stats via props.
+
+- [ ] **Feature: Tab Navigation Component**
+    - `GIVEN` the navigation tabs
+    - `WHEN` I click a tab
+    - `THEN` the URL should change (e.g., `/?tab=treino-a`) to support deep linking.
+
+- [ ] **Feature: Exercise Table Component**
+    - `GIVEN` a list of exercises for a specific day
+    - `WHEN` I render the `<ExerciseTable />` component
+    - `THEN` it should map through the data and render rows dynamically.
+    - `AND` it should support bi-sets and tri-sets visuals.
+
+- [ ] **Feature: Exercise Modal Component**
+    - `GIVEN` an exercise click event
+    - `WHEN` the modal opens
+    - `THEN` it should use a `shadcn/ui` Dialog component to show details like "Errors" and "Coaching Cues".
 
 ---
 
-## 🔐 Phase 3: Identity & Persistence (Backend)
-*Status: 📅 Future*
+## 📅 Phase 3: Identity & Persistence (Backend)
+*Status: 📅 Planned*
 *Goal: Allow users to save history permanently and access it from any device.*
 
 - [ ] **Feature: User Authentication**
