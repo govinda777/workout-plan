@@ -3,6 +3,15 @@
 **Vision:** Transform the current workout tracker into a gamified NFT platform for training plans.
 **Methodology:** Baby Steps (Incremental Improvements) & BDD (Behavior Driven Development).
 
+## 📊 Project Status Dashboard
+
+| Phase | Focus Area | Status | Progress | Goal |
+| :--- | :--- | :---: | :---: | :--- |
+| **1. Foundation** | Static HTML Site | ✅ Active | **100%** | Functional workout tracker (MVP) |
+| **2. Modernization** | Next.js Migration | 🚧 To Do | **0%** | Modular, responsive, and scalable code |
+| **3. Identity** | Backend & DB | 📅 Future | **0%** | User auth and persistent history |
+| **4. Web3 / NFT** | Gamification | 📅 Future | **0%** | NFT rewards and token-gated content |
+
 ---
 
 ## 🟢 Phase 1: Foundation (Current State - Static HTML)
@@ -34,23 +43,52 @@
 
 ## 🏗️ Phase 2: Modernization (Next.js Migration)
 *Status: 🚧 To Do*
-*Goal: Modularize code, improve performance, and prepare for scalability.*
+*Goal: Modularize code, improve performance, and prepare for scalability using "Baby Steps".*
 
-- [ ] **Feature: Project Setup**
-    - `GIVEN` the developer environment
-    - `WHEN` I initialize the Next.js 14 project
-    - `THEN` the folder structure should follow the App Router standards.
+### 2.1 Environment Setup
+- [ ] **Feature: Initialize Next.js Project**
+    - `GIVEN` a developer machine
+    - `WHEN` I initialize the project with `create-next-app`
+    - `THEN` I should have a Next.js 14 App Router structure with TypeScript.
+    - `AND` Tailwind CSS and shadcn/ui should be configured.
 
-- [ ] **Feature: Component Architecture**
-    - `GIVEN` the monolithic `index.html`
-    - `WHEN` I refactor the code
-    - `THEN` exercises should be reusable React components.
-    - `AND` data (athlete data) should be separated from the view logic (JSON files).
+### 2.2 Data Layer Separation
+- [ ] **Feature: Extract Static Data**
+    - `GIVEN` the monolithic `index.html` file
+    - `WHEN` I extract the `athleteData` and `treinos` objects
+    - `THEN` they should reside in separate JSON/TS files (e.g., `data/exercises.ts`).
+    - `AND` the types/interfaces should be defined.
 
-- [ ] **Feature: Responsive UI with Tailwind**
-    - `GIVEN` a mobile user
-    - `WHEN` they access the application
-    - `THEN` the interface should be fully responsive using Tailwind CSS classes.
+### 2.3 Component Migration (Baby Steps)
+- [ ] **Feature: Header & Layout**
+    - `GIVEN` the new Next.js app
+    - `WHEN` I implement the `Header` and `AthleteInfo` components
+    - `THEN` they should display the athlete's details matching the original design.
+
+- [ ] **Feature: Week Selector Component**
+    - `GIVEN` the workout view
+    - `WHEN` I click the Week Selector
+    - `THEN` it should update the global state (Zustand) to the selected week.
+
+- [ ] **Feature: Workout Tabs Navigation**
+    - `GIVEN` the main page
+    - `WHEN` I implement the tab navigation (A, B, C, E, F)
+    - `THEN` clicking a tab should switch the active view content.
+
+- [ ] **Feature: Exercise List Component**
+    - `GIVEN` a selected workout day
+    - `WHEN` I render the exercise list
+    - `THEN` it should display the correct exercises, sets, and reps for the selected week.
+
+- [ ] **Feature: Exercise Detail Modal**
+    - `GIVEN` an exercise list
+    - `WHEN` I click an exercise
+    - `THEN` a Modal (Dialog) should appear with the exercise details.
+
+- [ ] **Feature: Progress Tracking (Zustand)**
+    - `GIVEN` the user completes a set
+    - `WHEN` they check the box
+    - `THEN` the state should be persisted to `localStorage` via Zustand middleware.
 
 ---
 
