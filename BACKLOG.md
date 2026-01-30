@@ -5,6 +5,14 @@
 
 ---
 
+## 🎯 Current Focus
+**Phase 2.1: Environment Setup**
+- [ ] **Feature: Initialize Next.js Project** (Set up the foundation)
+- [ ] **Feature: Setup Tailwind CSS & Shadcn/UI** (Styling infrastructure)
+- [ ] **Feature: Establish Folder Structure** (Organization for scalability)
+
+---
+
 ## 📊 Status Overview
 
 | Phase | Goal | Status | Progress |
@@ -41,6 +49,16 @@
     - `WHEN` I switch from "Weeks 1-2" to "Weeks 3-4"
     - `THEN` the workout volume and intensity adjust automatically in the view.
 
+- [x] **Feature: Overview Dashboard**
+    - `GIVEN` I open the application
+    - `WHEN` I view the "Visão Geral" tab
+    - `THEN` I see key statistics like "Frequência Glúteo" and "Volume Semanal".
+
+- [x] **Feature: Educational Content**
+    - `GIVEN` I want to understand the methodology
+    - `WHEN` I click "Por Que Funciona"
+    - `THEN` I see evidence-based explanations for the heavy/light protocol.
+
 ---
 
 ## 🏗️ Phase 2: Modernization (Next.js Migration)
@@ -48,11 +66,20 @@
 *Goal: Modularize code, improve performance, and prepare for scalability using "Baby Steps".*
 
 ### 2.1 Environment Setup
-- [ ] **Feature: Next.js Initialization**
-    - `GIVEN` I have a clean repository
-    - `WHEN` I initialize the Next.js 14 project with App Router
-    - `THEN` I should see the default Next.js folder structure.
-    - `AND` Tailwind CSS should be configured.
+- [ ] **Feature: Initialize Next.js Project**
+    - `GIVEN` I have a clean repository or subfolder
+    - `WHEN` I run the `create-next-app` command
+    - `THEN` I have a working Next.js 14 App Router application running locally.
+
+- [ ] **Feature: Setup Tailwind CSS & Shadcn/UI**
+    - `GIVEN` the Next.js project is initialized
+    - `WHEN` I install and configure Tailwind CSS and Shadcn/UI
+    - `THEN` I can use utility classes and pre-built components in the application.
+
+- [ ] **Feature: Establish Folder Structure**
+    - `GIVEN` the initialized project
+    - `WHEN` I create the `components/`, `lib/`, `types/`, and `data/` directories
+    - `THEN` the project is organized for modular development.
 
 - [ ] **Feature: Asset Migration**
     - `GIVEN` the existing static HTML project
@@ -124,16 +151,16 @@
 *Goal: Incentivize training consistency with digital assets.*
 
 - [ ] **Feature: Wallet Connection**
-    - `GIVEN` a user with a crypto wallet (e.g., MetaMask)
-    - `WHEN` they click "Connect Wallet"
-    - `THEN` the app authenticates their address.
+    - `GIVEN` a user with a Web3 wallet (e.g., MetaMask, Phantom)
+    - `WHEN` they connect their wallet to the platform
+    - `THEN` the app recognizes their unique public address as their identity.
 
 - [ ] **Feature: Mint Completion NFT**
     - `GIVEN` a user has completed 100% of the "4-Week Heavy/Light" plan
-    - `WHEN` they click "Claim Reward"
-    - `THEN` a smart contract mints a "Completion Badge" NFT to their wallet.
+    - `WHEN` the system validates their progress
+    - `THEN` they can mint a unique "Completion Badge" NFT (Soulbound Token) as proof of effort.
 
-- [ ] **Feature: Token Gated Content**
-    - `GIVEN` a premium workout plan
-    - `WHEN` a user tries to access it
-    - `THEN` the system checks if they hold the required NFT Access Pass.
+- [ ] **Feature: Token Gated Access**
+    - `GIVEN` a "Pro Athlete" workout plan
+    - `WHEN` a user attempts to view it
+    - `THEN` the system checks if they hold the specific NFT Access Pass required to unlock it.
