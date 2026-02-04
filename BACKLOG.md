@@ -12,6 +12,11 @@
 
 ---
 
+## 🔥 Current Focus: Phase 2.1 - Environment Setup
+*We are currently migrating the static base to a robust Next.js architecture.*
+
+---
+
 ## 📊 Status Overview
 
 | Phase | Goal | Status | Progress |
@@ -41,6 +46,16 @@
     - `WHEN` I click on an exercise row
     - `THEN` a modal opens with details (Anatomy, Errors, Coaching Cues).
 
+- [x] **Feature: Generic Fallback Modal**
+    - `GIVEN` I click on an exercise that is missing specific data
+    - `WHEN` the modal opens
+    - `THEN` it displays a generic template with a YouTube search link.
+
+- [x] **Feature: Educational Content (Why This Works)**
+    - `GIVEN` I am on the dashboard
+    - `WHEN` I click the "Why This Works" tab
+    - `THEN` I see scientific explanations for the workout volume and frequency.
+
 - [x] **Feature: Track Progress (Local)**
     - `GIVEN` I have performed a set
     - `WHEN` I check the box for that set
@@ -51,6 +66,16 @@
     - `WHEN` I switch from "Weeks 1-2" to "Weeks 3-4"
     - `THEN` the workout volume and intensity adjust automatically.
 </details>
+
+- [x] **Feature: Educational Content**
+    - `GIVEN` I am on the dashboard
+    - `WHEN` I click the "Why This Works" tab
+    - `THEN` I see the scientific explanation and biomechanical logic of the plan.
+
+- [x] **Feature: Theme System**
+    - `GIVEN` the application is loaded
+    - `WHEN` I view any page
+    - `THEN` the colors and typography follow the defined design tokens (Dark Mode, Accents).
 
 ---
 
@@ -64,6 +89,11 @@
     - `WHEN` I initialize the Next.js 14 project with App Router
     - `THEN` I should see the default Next.js folder structure.
     - `AND` Tailwind CSS should be configured.
+
+- [ ] **Feature: Theme Configuration (Tailwind)**
+    - `GIVEN` the Next.js project
+    - `WHEN` I configure `tailwind.config.ts`
+    - `THEN` I should have the same color palette (Primary, Accents) available as utility classes.
 
 - [ ] **Feature: Asset Migration**
     - `GIVEN` the existing static HTML project
