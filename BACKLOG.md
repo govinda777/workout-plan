@@ -25,6 +25,11 @@
 *Status: ✅ Completed*
 *Goal: Provide a functional workout tracker for Andrea Mitsuoka using simple technologies.*
 
+- [x] **Feature: Athlete Header**
+    - `GIVEN` the application loads
+    - `WHEN` I view the top of the page
+    - `THEN` I see the athlete's name, age, and program details.
+
 - [x] **Feature: View Workout Plan**
     - `GIVEN` I am on the landing page
     - `WHEN` I select a specific day (e.g., "Monday")
@@ -35,6 +40,16 @@
     - `GIVEN` I am viewing the exercise list
     - `WHEN` I click on an exercise row
     - `THEN` a modal opens with details (Anatomy, Errors, Coaching Cues).
+
+- [x] **Feature: Generic Fallback Modal**
+    - `GIVEN` I click on an exercise that is missing specific data
+    - `WHEN` the modal opens
+    - `THEN` it displays a generic template with a YouTube search link.
+
+- [x] **Feature: Educational Content (Why This Works)**
+    - `GIVEN` I am on the dashboard
+    - `WHEN` I click the "Why This Works" tab
+    - `THEN` I see scientific explanations for the workout volume and frequency.
 
 - [x] **Feature: Track Progress (Local)**
     - `GIVEN` I have performed a set
