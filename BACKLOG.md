@@ -5,19 +5,44 @@
 
 ---
 
-## 🚀 Current Focus
-**Phase 2.1: Environment Setup**
-- [ ] Initialize Next.js 14 Project
-- [ ] Setup Tailwind CSS & shadcn/ui
+## 🧭 Legend & Status
+
+| Icon | Meaning | Action Required |
+| :---: | :--- | :--- |
+| 🚀 | **Current Focus** | Priority tasks to be picked up immediately. |
+| ✅ | **Done** | Feature is implemented, tested, and deployed. |
+| 🚧 | **In Progress** | Currently being worked on. |
+| 📅 | **Planned** | Future tasks, ready for refinement. |
+| 💎 | **Goal / Milestone** | Major phase completion. |
 
 ---
 
-## 🔥 Current Focus: Phase 2.1 - Environment Setup
-*We are currently migrating the static base to a robust Next.js architecture.*
+## 🚀 Current Focus: Phase 2.1 - Environment Setup
+*Objective: Migrate the static base to a robust Next.js 14 architecture.*
+
+- [ ] **Feature: Next.js Initialization**
+    - `GIVEN` I have a clean repository
+    - `WHEN` I run `npx create-next-app@latest`
+    - `THEN` I should have a Next.js 14 project with TypeScript, Tailwind, and App Router.
+
+- [ ] **Feature: Shadcn/UI Configuration**
+    - `GIVEN` the Next.js project is initialized
+    - `WHEN` I run `npx shadcn-ui@latest init`
+    - `THEN` I should have the `components/ui` folder structure ready.
+
+- [ ] **Feature: Design System & Fonts**
+    - `GIVEN` the current `index.html` styles
+    - `WHEN` I configure `globals.css` and `tailwind.config.ts`
+    - `THEN` the "Dark Mode" and specific colors (Primary #32b8c6) should be available as utility classes.
+
+- [ ] **Feature: Static Asset Migration**
+    - `GIVEN` the existing project
+    - `WHEN` I move images and icons to `public/`
+    - `THEN` they should be accessible via `http://localhost:3000/image.png`.
 
 ---
 
-## 📊 Status Overview
+## 📊 Roadmap Overview
 
 | Phase | Goal | Status | Progress |
 | :--- | :--- | :--- | :--- |
@@ -65,17 +90,12 @@
     - `GIVEN` I am progressing through the program
     - `WHEN` I switch from "Weeks 1-2" to "Weeks 3-4"
     - `THEN` the workout volume and intensity adjust automatically.
-</details>
-
-- [x] **Feature: Educational Content**
-    - `GIVEN` I am on the dashboard
-    - `WHEN` I click the "Why This Works" tab
-    - `THEN` I see the scientific explanation and biomechanical logic of the plan.
 
 - [x] **Feature: Theme System**
     - `GIVEN` the application is loaded
     - `WHEN` I view any page
     - `THEN` the colors and typography follow the defined design tokens (Dark Mode, Accents).
+</details>
 
 ---
 
@@ -83,67 +103,58 @@
 *Status: 🚧 To Do*
 *Goal: Modularize code and prepare for scalability using "Baby Steps".*
 
-### 2.1 🛠️ Environment Setup
-- [ ] **Feature: Next.js Initialization**
-    - `GIVEN` I have a clean repository
-    - `WHEN` I initialize the Next.js 14 project with App Router
-    - `THEN` I should see the default Next.js folder structure.
-    - `AND` Tailwind CSS should be configured.
-
-- [ ] **Feature: Theme Configuration (Tailwind)**
-    - `GIVEN` the Next.js project
-    - `WHEN` I configure `tailwind.config.ts`
-    - `THEN` I should have the same color palette (Primary, Accents) available as utility classes.
-
-- [ ] **Feature: Asset Migration**
-    - `GIVEN` the existing static HTML project
-    - `WHEN` I move images and static files to `public/`
-    - `THEN` they should be accessible via the new Next.js routes.
-
-### 2.2 📦 Data Extraction (Preparation)
-- [ ] **Feature: Extract Athlete Data**
+### 2.2 📦 Data Extraction (JSON/Types)
+- [ ] **Feature: Extract Athlete Profile**
     - `GIVEN` the monolithic `index.html`
     - `WHEN` I create a `data/athlete.json` file
-    - `THEN` the data should be structured and typed.
+    - `THEN` the athlete's metadata (age, weight, goal) should be separated from the UI code.
 
-- [ ] **Feature: Extract Exercises Data**
-    - `GIVEN` the hardcoded exercise list
+- [ ] **Feature: Extract Exercise Database**
+    - `GIVEN` the hardcoded exercise javascript object
     - `WHEN` I create a `data/exercises.json` file
-    - `THEN` all exercise details should be in a structured format.
+    - `THEN` all exercise details (cues, errors, muscle groups) should be in a structured format.
 
 - [ ] **Feature: Extract Workout Plans**
     - `GIVEN` the hardcoded workout tables
     - `WHEN` I create a `data/workouts.json` file
-    - `THEN` the workout structure should be represented as data objects.
+    - `THEN` the workout structure (Sets, Reps, RPE) should be represented as data objects.
 
 ### 2.3 🧩 Component Architecture
 - [ ] **Feature: Header Component**
     - `GIVEN` the static header HTML
     - `WHEN` I create a `<Header />` React component
-    - `THEN` it should display data dynamically.
+    - `THEN` it should accept athlete data as props and render the info cards.
 
 - [ ] **Feature: Week Selector Component**
     - `GIVEN` the week selection buttons
-    - `WHEN` I create a `<WeekSelector />` component
-    - `THEN` it should update the global state.
+    - `WHEN` I create a `<WeekSelector />` component with Zustand state
+    - `THEN` it should toggle the global `currentWeek` state.
 
 - [ ] **Feature: Workout Tabs Component**
     - `GIVEN` the tab navigation
     - `WHEN` I create a `<WorkoutTabs />` component
-    - `THEN` it should render buttons dynamically.
+    - `THEN` it should render buttons dynamically based on the active plan.
 
 - [ ] **Feature: Exercise List Component**
     - `GIVEN` the list of exercises
     - `WHEN` I create an `<ExerciseList />` component
-    - `THEN` it should map through the workout data.
+    - `THEN` it should map through the workout data and render rows.
 
 ---
 
 ## 🔐 Phase 3: Identity & Persistence (Backend)
 *Status: 📅 Future*
+*Goal: Save progress to a database so it persists across devices.*
 
-- [ ] **Feature: User Authentication** (Email/Password)
-- [ ] **Feature: History Sync** (Database connection)
+- [ ] **Feature: User Authentication**
+    - `GIVEN` a visitor
+    - `WHEN` they sign up with email/password
+    - `THEN` they should have a personal account.
+
+- [ ] **Feature: History Sync (Supabase/Postgres)**
+    - `GIVEN` a logged-in user
+    - `WHEN` they check a workout set
+    - `THEN` the progress is saved to the remote database instead of LocalStorage.
 
 ---
 
@@ -152,16 +163,18 @@
 *Goal: Incentivize training consistency with digital assets.*
 
 - [ ] **Feature: Wallet Connection**
-    - `GIVEN` a user with a crypto wallet
+    - `GIVEN` a user with a crypto wallet (Metamask/Rabby)
     - `WHEN` they click "Connect Wallet"
-    - `THEN` the app authenticates their address.
+    - `THEN` the app authenticates their public address.
 
 - [ ] **Feature: Mint Completion NFT**
-    - `GIVEN` a user has completed 100% of the plan
+    - `GIVEN` a user has completed 100% of the 4-week plan
     - `WHEN` they click "Claim Reward"
-    - `THEN` a smart contract mints a "Completion Badge" NFT.
+    - `THEN` the system verifies the database records
+    - `AND` a smart contract mints a "Completion Badge" NFT to their wallet.
 
-- [ ] **Feature: Token Gated Content**
-    - `GIVEN` a premium workout plan
+- [ ] **Feature: Token Gated Workouts**
+    - `GIVEN` a premium "Glute Master" workout plan
     - `WHEN` a user tries to access it
-    - `THEN` the system checks if they hold the required NFT.
+    - `THEN` the system checks if they hold the "Phase 1 Completion" NFT
+    - `AND` allows access only if the NFT is present.
